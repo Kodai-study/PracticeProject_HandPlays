@@ -1,5 +1,4 @@
-import console.ArrayKeys;
-import console.InputType;
+package console;
 
 public class InputController {
 
