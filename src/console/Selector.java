@@ -22,6 +22,10 @@ public class Selector {
         viewOptions();
     }
 
+    public int getSelectedIndex() {
+        return selectedIndex;
+    }
+
     public void viewOptions() {
         terminalManager.clearScreen();
         for (int i = 0; i < options.length; i++) {
