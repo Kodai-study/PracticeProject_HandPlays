@@ -1,3 +1,4 @@
+import console.ArrayKeys;
 import console.InputType;
 
 public class InputController {
@@ -12,7 +13,45 @@ public class InputController {
     }
 
     public InputType get_input_type() {
-        return null;
+        ArrayKeys key_input = get_array_input();
+        if (key_input != null) {
+            return InputType.ArrayKey;
+        }
+        int last_input = get_previous_input(1);
+        if (last_input > 48 && last_input < 57) {
+            return InputType.Number;
+        }
+        if (last_input < 65)
+            return InputType.Other;
+        if (last_input < 90 || last_input > 97)
+            return InputType.Other;
+        if (last_input > 122)
+            return InputType.Other;
+        return InputType.Char;
+    }
+
+    private ArrayKeys get_array_input() {
+        if (get_previous_input(3) != 27) {
+            return null;
+        }
+        if (get_previous_input(2) != 79) {
+            return null;
+        }
+        return switch (get_previous_input(1)) {
+            case 65 -> ArrayKeys.Up;
+            case 66 -> ArrayKeys.Down;
+            case 67 -> ArrayKeys.Right;
+            case 68 -> ArrayKeys.Left;
+            default -> null;
+        };
+    }
+
+    private int get_previous_input(int previous_number) {
+        int index = history_index - previous_number;
+        if (index < 0) {
+            index += HISTORY_SIZE;
+        }
+        return input_history[index];
     }
 
     public int input_number() {
