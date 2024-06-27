@@ -9,9 +9,21 @@ import org.jline.utils.InfoCmp;
 public class JlineTerminalManager implements ITerminalManager {
 
     private Terminal terminal;
+    private JlineTerminalManager instance;
 
     private JlineTerminalManager() throws IOException {
         this.terminal = TerminalBuilder.builder().system(true).build();
+    }
+
+    public JlineTerminalManager getInstance() {
+        try {
+            if (instance == null) {
+                instance = new JlineTerminalManager();
+            }
+            return instance;
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     @Override
