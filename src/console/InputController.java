@@ -28,7 +28,7 @@ public class InputController {
         }
         if (last_input < 65)
             return InputType.Other;
-        if (last_input < 90 || last_input > 97)
+        if (last_input > 90 && last_input < 97)
             return InputType.Other;
         if (last_input > 122)
             return InputType.Other;
