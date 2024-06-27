@@ -2,10 +2,13 @@ package console;
 
 public class InputController {
 
-    private int[] input_history = new int[4];
-    private int history_index = 0;
     private static int HISTORY_SIZE = 4;
+    private int[] input_history = new int[HISTORY_SIZE];
+    private int history_index = 0;
     private ArrayKeys array_input = null;
+
+    public InputController() {
+    }
 
     public void regist_input(int key_code) {
         input_history[history_index] = key_code;
