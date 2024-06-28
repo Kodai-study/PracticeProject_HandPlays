@@ -29,12 +29,13 @@ public class Selector {
     public void viewOptions() {
         terminalManager.clearScreen();
         for (int i = 0; i < options.length; i++) {
+            StringBuffer line = new StringBuffer("");
             if (i == selectedIndex) {
-                terminalManager.print(" > ");
+                line.append(" > ");
             } else {
-                terminalManager.print("   ");
+                line.append("   ");
             }
-            terminalManager.printLine(options[i]);
+            terminalManager.printLine(line.append(options[i]).toString());
         }
     }
 }
