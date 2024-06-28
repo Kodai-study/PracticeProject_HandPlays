@@ -9,13 +9,13 @@ import org.jline.utils.InfoCmp;
 public class JlineTerminalManager implements ITerminalManager {
 
     private Terminal terminal;
-    private JlineTerminalManager instance;
+    private static JlineTerminalManager instance;
 
     private JlineTerminalManager() throws IOException {
         this.terminal = TerminalBuilder.builder().system(true).build();
     }
 
-    public JlineTerminalManager getInstance() {
+    public static JlineTerminalManager getInstance() {
         try {
             if (instance == null) {
                 instance = new JlineTerminalManager();
@@ -39,6 +39,15 @@ public class JlineTerminalManager implements ITerminalManager {
     @Override
     public void print(String str) {
         System.out.print(str);
+    }
+
+    @Override
+    public int getOneCharInput() {
+        try {
+            return this.terminal.reader().read();
+        } catch (IOException e) {
+            return -1;
+        }
     }
 
 }
