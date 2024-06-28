@@ -6,4 +6,6 @@ public interface ITerminalManager {
     public void printLine(String line);
 
     public void print(String str);
+
+    public int getOneCharInput();
 }
