@@ -1,4 +1,4 @@
-package console;
+package main.console;
 
 import static org.junit.Assert.assertEquals;
 

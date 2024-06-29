@@ -7,9 +7,10 @@ import java.util.Collection;
 
 import org.junit.Test;
 import org.junit.runners.Parameterized;
-import console.ArrayKeys;
-import console.InputController;
-import console.InputType;
+
+import main.console.ArrayKeys;
+import main.console.InputController;
+import main.console.InputType;
 
 public class InputControllerTest {
     private InputController inputContext;
@@ -21,7 +22,7 @@ public class InputControllerTest {
     @Test
     public void testInputNumbersZero() {
         inputContext.regist_input(48);
-        assert inputContext.get_input_type().equals(console.InputType.Number);
+        assert inputContext.get_input_type().equals(main.console.InputType.Number);
         assert inputContext.get_number_input() == 0;
 
     }
@@ -29,7 +30,7 @@ public class InputControllerTest {
     @Test
     public void testInputNumbersNine() {
         inputContext.regist_input(57);
-        assert inputContext.get_input_type().equals(console.InputType.Number);
+        assert inputContext.get_input_type().equals(main.console.InputType.Number);
         assert inputContext.get_number_input() == 9;
     }
 
@@ -82,7 +83,7 @@ public class InputControllerTest {
             for (int keyCode : testData[i]) {
                 inputContext.regist_input(keyCode);
             }
-            assert inputContext.get_input_type().equals(console.InputType.ArrayKey);
+            assert inputContext.get_input_type().equals(main.console.InputType.ArrayKey);
             assert inputContext.get_array_input_key().equals(expectedResults[i]);
         }
     }

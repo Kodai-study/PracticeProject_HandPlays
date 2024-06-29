@@ -1,4 +1,4 @@
-package console;
+package main.console;
 
 public enum InputType {
     ArrayKey,

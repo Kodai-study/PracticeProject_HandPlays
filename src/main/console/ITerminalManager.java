@@ -1,4 +1,4 @@
-package console;
+package main.console;
 
 public interface ITerminalManager {
     public void clearScreen();

@@ -1,4 +1,4 @@
-package console;
+package main.console;
 
 public class Selector {
     private String[] options;
