@@ -2,17 +2,27 @@ package main.console;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
+import main.game.Option;
+
 public class SelectorTest {
-    String[] options;
+    List<Option<String>> options;
     SelectorOutputTester terminalManager;
-    Selector selector;
+    Selector<String> selector;
 
     public SelectorTest() {
-        options = new String[] { "Option1", "Option2", "Option3" };
+        options = new ArrayList<Option<String>>();
+
+        options.add(new Option<String>(1, "Option1", "Option1"));
+        options.add(new Option<String>(2, "Option2", "Option2"));
+        options.add(new Option<String>(3, "Option3", "Option3"));
         terminalManager = new SelectorOutputTester();
-        selector = new Selector(options, terminalManager);
+
+        this.selector = new Selector<>(options, terminalManager);
     }
 
     @Test
@@ -59,7 +69,7 @@ public class SelectorTest {
 
     @Test
     public void testSelectUpOverOptionNumbers() {
-        for (int i = 0; i < options.length; i++) {
+        for (int i = 0; i < options.size(); i++) {
             selector.selectDown();
         }
         String[] output = terminalManager.getOutput();
