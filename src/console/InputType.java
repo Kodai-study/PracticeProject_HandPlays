@@ -4,5 +4,6 @@ public enum InputType {
     ArrayKey,
     Number,
     Char,
+    Enter,
     Other
 }

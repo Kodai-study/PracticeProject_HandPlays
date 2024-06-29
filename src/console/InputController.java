@@ -26,6 +26,9 @@ public class InputController {
         if (last_input >= 48 && last_input <= 57) {
             return InputType.Number;
         }
+        if (last_input == 13) {
+            return InputType.Enter;
+        }
         if (last_input < 65)
             return InputType.Other;
         if (last_input > 90 && last_input < 97)
