@@ -7,8 +7,16 @@ public class SelectorOutputTester implements ITerminalManager {
 
     private List<String> output;
 
+    private List<Integer> input = new ArrayList<>();
+
     public SelectorOutputTester() {
         output = new ArrayList<String>();
+    }
+
+    public void addInputKeyCodes(int... keyCodes) {
+        for (int keyCode : keyCodes) {
+            input.add(keyCode);
+        }
     }
 
     public String[] getOutput() {
@@ -32,8 +40,10 @@ public class SelectorOutputTester implements ITerminalManager {
 
     @Override
     public int getOneCharInput() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getOneCharInput'");
+        if (input.isEmpty()) {
+            return 13;
+        }
+        return input.removeFirst();
     }
 
 }
