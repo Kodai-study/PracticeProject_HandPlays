@@ -1,24 +1,28 @@
 package main.console;
 
-public class Selector {
-    private String[] options;
+import java.util.List;
+
+import main.game.Option;
+
+public class Selector<T> {
+    private List<Option<T>> options;
     private int selectedIndex = 0;
     ITerminalManager terminalManager;
 
-    public Selector(String[] options, ITerminalManager terminalManager) {
+    public Selector(List<Option<T>> options, ITerminalManager terminalManager) {
         this.options = options;
         this.terminalManager = terminalManager;
     }
 
     public void selectUp() {
         terminalManager.clearScreen();
-        selectedIndex = (selectedIndex - 1 + options.length) % options.length;
+        selectedIndex = (selectedIndex - 1 + options.size()) % options.size();
         viewOptions();
     }
 
     public void selectDown() {
         terminalManager.clearScreen();
-        selectedIndex = (selectedIndex + 1) % options.length;
+        selectedIndex = (selectedIndex + 1) % options.size();
         viewOptions();
     }
 
@@ -27,15 +31,15 @@ public class Selector {
     }
 
     public void viewOptions() {
-        terminalManager.clearScreen();
-        for (int i = 0; i < options.length; i++) {
+        for (int i = 0; i < options.size(); i++) {
             StringBuffer line = new StringBuffer("");
             if (i == selectedIndex) {
                 line.append(" > ");
             } else {
                 line.append("   ");
             }
-            terminalManager.printLine(line.append(options[i]).toString());
+            line.append(options.get(i).getOptionName());
+            terminalManager.printLine(line.toString());
         }
     }
 }
